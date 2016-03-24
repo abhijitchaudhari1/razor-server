@@ -4,7 +4,6 @@ echo "Install python libs and ansible on VM"
 #Install python libs and ansible
 yum install python-devel -y
 yum install libevent-devel -y
-easy_install gevent
 yum install python-pip -y
 pip install ansible
 
@@ -41,7 +40,7 @@ Vagrant.configure("2") do |config|
  	config.vm.box = "centos-6.7"
 	config.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.6.7/vagrant-centos-6.7.box"
         config.vm.define "node2" do |node2|
-        node2.vm.network "private_network", ip: "192.168.2.4"
+        node2.vm.network "private_network", ip: "192.168.2.5"
         node2.vm.hostname = "node2.in"
         node2.vm.provider "virtualbox" do |vb|
 #        vb.gui = true
