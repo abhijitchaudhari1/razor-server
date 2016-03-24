@@ -39,10 +39,10 @@ EOS
 Vagrant.configure("2") do |config|
  	config.vm.box = "centos-6.7"
 	config.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.6.7/vagrant-centos-6.7.box"
-        config.vm.define "node2" do |node2|
-        node2.vm.network "private_network", ip: "192.168.2.5"
-        node2.vm.hostname = "node2.in"
-        node2.vm.provider "virtualbox" do |vb|
+        config.vm.define "razor-server" do |razor-server|
+        razor-server.vm.network "private_network", ip: "192.168.2.3"
+        razor-server.vm.hostname = "razor-server.initcron.com"
+        razor-server.vm.provider "virtualbox" do |vb|
 #        vb.gui = true
         vb.customize [
           "modifyvm", :id,
@@ -50,6 +50,6 @@ Vagrant.configure("2") do |config|
           "--memory", "1024",
 	]
 	end
-       node2.vm.provision "shell", inline: $script
+       razor-server.vm.provision "shell", inline: $script
        end
 end
