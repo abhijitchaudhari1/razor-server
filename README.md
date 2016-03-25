@@ -20,11 +20,12 @@ To create repo, Log in to razor server created earlier and download the ISO file
 E.g. 
 
 <pre>
+	vagrant ssh
 	sudo su - razor
 	wget http://centosmirror.go4hosting.in/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso 
- 	razor create-repo --name=centos-6.7  --iso-url file:///root/CentOS-6.7-x86_64-minimal.iso --task centos 
+ 	razor create-repo --name=centos-6.7  --iso-url file:///var/lib/razor/CentOS-6.7-x86_64-minimal.iso --task centos 
  	wget http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso 
- 	razor create-repo --name=ubuntu-14.04 --iso-url file:///root/ubuntu-14.04.3-server-amd64.iso --task ubuntu/trusty
+ 	razor create-repo --name=ubuntu-14.04 --iso-url file:///var/lib/razor/ubuntu-14.04.3-server-amd64.iso --task ubuntu/trusty
 </pre>
 
 
