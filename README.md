@@ -20,37 +20,11 @@ To create repo, Log in to razor server created earlier and download the ISO file
 E.g. 
 
 <pre>
-	sudo su - 
+	sudo su - razor
 	wget http://centosmirror.go4hosting.in/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso 
-	chown razor:razor  CentOS-6.7-x86_64-minimal.iso 
  	razor create-repo --name=centos-6.7  --iso-url file:///root/CentOS-6.7-x86_64-minimal.iso --task centos 
  	wget http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso 
- 	chown razor:razor ubuntu-14.04.3-server-amd64.iso 
  	razor create-repo --name=ubuntu-14.04 --iso-url file:///root/ubuntu-14.04.3-server-amd64.iso --task ubuntu/trusty
-</pre>
-
-Now create a folder called **repo-mount** and mount iso file onto the  **repo-mount**.
-
-<pre>
-	mount -o loop CentOS-6.7-x86_64-minimal.iso repo-mount
-</pre>
-
-create a folder with name same as the repo inside /var/lib/razor/repo-store/ and copy the contents of repo-mount into the directory.
-
-<pre> 
-	mkdir /var/lib/razor/repo-store/centos-6.7/
-	cp -rf repo-mount/*  /var/lib/razor/repo-store/centos-6.7/
-</pre>
-
-Now unmount the centos iso and mount ubuntu ISO
-
-<pre>
-	umount repo-mount
-	mount -o loop ubuntu-14.04.3-server-amd64.iso repo-mount
-	mkdir /var/lib/razor/repo-store/ubuntu-14.04
-	cp -rf repo-mount/*  /var/lib/razor/repo-store/ubuntu-14.04
-	chown razor:razor -R /var/lib/razor/repo-store/
-	umount repo-mount
 </pre>
 
 
